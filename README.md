@@ -11,6 +11,8 @@ This project helped me understand full-stack application development, authentica
 ---
 <img width="958" height="448" alt="image" src="https://github.com/user-attachments/assets/6c3ac12d-5649-4c0a-b84f-1d0e8333b694" />
 
+---
+
 ## Features
 
 ### For Job Seekers
