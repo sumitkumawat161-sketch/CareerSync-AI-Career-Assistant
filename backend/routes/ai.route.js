@@ -2,11 +2,10 @@ import express from "express";
 import isAuthenticated from "../middlewares/isAuthenticated.js";
 //import { getResumeRecommendations } from "../controllers/ai.controller.js";
 import {
-    getResumeRecommendations,
-    askCareerAI
+    getResumeRecommendations
 } from "../controllers/ai.controller.js";
-import { chatWithResume } from "../controllers/ai.controller.js";
-
+//import { chatWithResume } from "../controllers/ai.controller.js";
+import { askRagAI } from "../controllers/ai.controller.js";
 const router = express.Router();
 
 router.get(
@@ -14,11 +13,15 @@ router.get(
     isAuthenticated,
     getResumeRecommendations
 );
+// router.post(
+//     "/chat",
+//     isAuthenticated,
+//     askCareerAI,
+//     chatWithResume
+// );
 router.post(
-    "/chat",
+    "/rag",
     isAuthenticated,
-    askCareerAI,
-    chatWithResume
+    askRagAI
 );
-
 export default router;

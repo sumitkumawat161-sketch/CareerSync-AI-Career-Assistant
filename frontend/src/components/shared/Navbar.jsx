@@ -43,43 +43,49 @@ const Navbar = () => {
             {user && user.role === "recruiter" ? (
               <>
                 <li>
-                  <Link to="/admin/companies"
-                  className="hover:text-[#6A38C2] transition-colors duration-300"
-                  >Companies</Link>
+                  <Link
+                    to="/admin/companies"
+                    className="hover:text-[#6A38C2] transition-colors duration-300"
+                  >
+                    Companies
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/admin/jobs"
-                  className="hover:text-[#6A38C2] transition-colors duration-300"
+                  <Link
+                    to="/admin/jobs"
+                    className="hover:text-[#6A38C2] transition-colors duration-300"
                   >
-                  Jobs
+                    Jobs
                   </Link>
                 </li>
               </>
             ) : (
               <>
                 <li>
-                  <Link to="/"
-                  className="relative hover:text-[#6A38C2] transition-colors duration-300"
+                  <Link
+                    to="/"
+                    className="relative hover:text-[#6A38C2] transition-colors duration-300"
                   >
-                  Home
-
+                    Home
                   </Link>
                 </li>
                 <li>
-                  <Link to="/jobs"
-                  className="relative hover:text-[#6A38C2] transition-colors duration-300"
+                  <Link
+                    to="/jobs"
+                    className="relative hover:text-[#6A38C2] transition-colors duration-300"
                   >
                     Jobs
                   </Link>
                 </li>
                 <li>
-                  <Link to="/browse"
-                  className= "relative hover:text-[#6A38C2] transition-colors duration-300"
+                  <Link
+                    to="/browse"
+                    className="relative hover:text-[#6A38C2] transition-colors duration-300"
                   >
                     Browse
                   </Link>
                 </li>
-                {user && user.role === "student" && (
+                {/* {user && user.role === "student" && (
                   <li>
                     <Link to="/ai-assistant">
                       <Button className="bg-[#6A38C2] hover:bg-[#5b30a6]">
@@ -88,8 +94,21 @@ const Navbar = () => {
                       </Button>
                     </Link>
                   </li>
-                )}
+                )} */}
               </>
+            )}
+            {user && user.role === "student" && (
+              <li>
+                <Link to="/career-sync-ai">
+                  <Button
+                    variant="outline"
+                    className="rounded-full border-[#6A38C2] text-[#6A38C2] hover:bg-[#6A38C2] hover:text-white transition-all duration-300"
+                  >
+                    <Sparkles className="w-4 h-4 mr-2" />
+                    CareerSync AI
+                  </Button>
+                </Link>
+              </li>
             )}
           </ul>
           {!user ? (

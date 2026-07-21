@@ -14,7 +14,19 @@ Consider:
 - Projects
 - Technologies
 - Experience
+Return ONLY ONE of these exact roles:
 
+Backend Developer
+Frontend Developer
+Full Stack Developer
+Machine Learning Engineer
+Data Scientist
+DevOps Engineer
+AI Engineer
+
+Do not use hyphens.
+Do not invent new titles.
+Return only the role name.
 Return ONLY one role.
 
 Resume:
