@@ -40,8 +40,14 @@ temp/
 *.cache
 .cache/
 
-# Python (if AI backend uses Python)
+
+# Python
+venv/
 __pycache__/
 *.pyc
-venv/
-.venv/
+
+# Qdrant
+qdrant_data/
+
+# Logs
+logs/
