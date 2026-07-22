@@ -24,10 +24,11 @@ app.use(cookieParser());
 // CORS Configuration
 const allowedOrigins = [
   "http://localhost:5173",
+  "https://smart-job-portal-26cd-gaird3p32.vercel.app",
   "https://smart-job-portal-26cd.vercel.app",
   "https://smart-job-portal-7br3.vercel.app",
 ];
-
+console.log("Allowed Origins:", allowedOrigins);
 app.use(
   cors({
     origin: function (origin, callback) {
