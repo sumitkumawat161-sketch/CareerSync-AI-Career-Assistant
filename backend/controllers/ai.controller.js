@@ -6,7 +6,7 @@ import { findMatchingJobs } from "../ai/findMatchingJobs.js";
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import { Chat } from "../models/chat.model.js";
 import axios from "axios";
-const AI_BASE_URL = "http://127.0.0.1:8000";
+const AI_BASE_URL = process.env.AI_SERVICE_URL || "http://127.0.0.1:8000";
 // Gemini Model
 console.log(process.env.GEMINI_API_KEY);
 const model = new ChatGoogleGenerativeAI({
@@ -117,7 +117,7 @@ ${job.location}
     // Last 10 messages only
     const history = chat.messages.slice(-10);
 
-    const response = await axios.post("http://127.0.0.1:8000/chat", {
+    const response = await axios.post(`${AI_BASE_URL}/chat`, {
       question,
       user_id: userId,
       jobs_context: jobsContext,

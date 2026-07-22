@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 import getDataUri from "../utils/datauri.js";
 import cloudinary from "../utils/cloudinary.js";
 import axios from "axios";
+const AI_BASE_URL = process.env.AI_SERVICE_URL || "http://127.0.0.1:8000";
 export const register = async (req, res) => {
   try {
     const { fullname, email, phoneNumber, password, role } = req.body;
@@ -183,10 +184,13 @@ export const updateProfile = async (req, res) => {
         user.profile.resumeOriginalName = req.file.originalname;
         // -------- FastAPI Ingest --------
         try {
-          const aiResponse = await axios.post("http://127.0.0.1:8000/ingest", {
-            resume_url: cloudResponse.secure_url,
-            user_id: user._id.toString(),
-          });
+          const aiResponse = await axios.post(
+            `${AI_BASE_URL}/ingest`,
+            {
+              resume_url: cloudResponse.secure_url,
+              user_id: user._id.toString(),
+            },
+          );
           console.log(aiResponse.data);
           user.profile.predictedRole = aiResponse.data.predicted_role;
           console.log("✅ Resume indexed in FastAPI");

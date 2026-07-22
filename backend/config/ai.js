@@ -1,3 +1,3 @@
 module.exports = {
-    AI_BASE_URL: "http://127.0.0.1:8000"
+    AI_BASE_URL: "https://careersync-ai-career-assistant-2.onrender.com"
 };

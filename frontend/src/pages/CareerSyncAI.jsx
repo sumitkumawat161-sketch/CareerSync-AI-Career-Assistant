@@ -4,6 +4,7 @@ import { AI_API_END_POINT } from "@/utils/constant";
 import ChatHeader from "@/components/ai/ChatHeader";
 import SuggestedQuestions from "@/components/ai/SuggestedQuestions";
 import MessageBubble from "@/components/ai/MessageBubble";
+const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 const CareerSyncAI = () => {
   const [messages, setMessages] = useState([
     {
@@ -20,7 +21,7 @@ const CareerSyncAI = () => {
   const loadChatHistory = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:8000/api/v1/ai-conversation/history",
+        `${BASE_URL}/api/v1/ai-conversation/history`,
         {
           withCredentials: true,
         },
