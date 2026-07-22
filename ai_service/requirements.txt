@@ -10,7 +10,6 @@ langchain
 langchain-core
 langchain-community
 langchain-google-genai
-langchain-huggingface
 langchain-text-splitters
 langchain-qdrant
 
@@ -31,5 +30,3 @@ numpy
 httpx
 tqdm
 pydantic
-# Embeddings
-sentence-transformers

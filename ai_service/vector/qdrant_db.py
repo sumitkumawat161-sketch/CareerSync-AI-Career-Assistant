@@ -18,9 +18,9 @@ if COLLECTION_NAME not in existing:
     client.create_collection(
         collection_name=COLLECTION_NAME,
         vectors_config=VectorParams(
-            size=384,      # BGE-small embedding dimension
-            distance=Distance.COSINE,
-        ),
+        size=3072,
+        distance=Distance.COSINE,
+    ),
     )
 
 vector_store = QdrantVectorStore(

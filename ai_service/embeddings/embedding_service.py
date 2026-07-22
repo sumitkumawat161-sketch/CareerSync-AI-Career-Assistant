@@ -1,10 +1,14 @@
-from langchain_huggingface import HuggingFaceEmbeddings
+import os
+from dotenv import load_dotenv
 
-# BAAI embedding model
-embeddings = HuggingFaceEmbeddings(
-    model_name="BAAI/bge-small-en-v1.5",
-    model_kwargs={"device": "cpu"},
-    encode_kwargs={"normalize_embeddings": True},
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
+
+load_dotenv()
+
+# Gemini Embedding Model
+embeddings = GoogleGenerativeAIEmbeddings(
+    model="models/text-embedding-004",
+    google_api_key=os.getenv("GOOGLE_API_KEY"),
 )
 
 
@@ -13,10 +17,7 @@ def embed_documents(chunks):
     Convert document chunks into vector embeddings.
     """
     texts = [doc.page_content for doc in chunks]
-
-    vectors = embeddings.embed_documents(texts)
-
-    return vectors
+    return embeddings.embed_documents(texts)
 
 
 def embed_query(query: str):

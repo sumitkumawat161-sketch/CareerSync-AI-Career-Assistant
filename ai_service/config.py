@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
 load_dotenv()
 
@@ -13,9 +13,8 @@ llm = ChatGoogleGenerativeAI(
     temperature=0.3,
 )
 
-# HuggingFace Embedding Model
-embeddings = HuggingFaceEmbeddings(
-    model_name="BAAI/bge-small-en-v1.5",
-    model_kwargs={"device": "cpu"},
-    encode_kwargs={"normalize_embeddings": True},
+# Gemini Embedding Model
+embeddings = GoogleGenerativeAIEmbeddings(
+    model="models/gemini-embedding-001",
+    google_api_key=os.getenv("GOOGLE_API_KEY"),
 )
