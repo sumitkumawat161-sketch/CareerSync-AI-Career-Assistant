@@ -31,3 +31,5 @@ numpy
 httpx
 tqdm
 pydantic
+# Embeddings
+sentence-transformers
