@@ -9,6 +9,9 @@ To make the job search process more personalized, I integrated Generative AI usi
 This project helped me understand full-stack application development, authentication, AI integration, prompt engineering, and building intelligent backend services.
 
 ---
+<img width="958" height="448" alt="image" src="https://github.com/user-attachments/assets/6c3ac12d-5649-4c0a-b84f-1d0e8333b694" />
+
+---
 
 ## Features
 
