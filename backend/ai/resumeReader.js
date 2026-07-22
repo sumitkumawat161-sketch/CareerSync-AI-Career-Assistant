@@ -1,16 +1,29 @@
 import axios from "axios";
-import pdfParse from "pdf-parse";
+import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf.mjs";
 
 export const readResumeFromUrl = async (resumeUrl) => {
-    console.log("Resume URL:", resumeUrl);
+  console.log("Resume URL:", resumeUrl);
 
-    const response = await axios.get(resumeUrl, {
-        responseType: "arraybuffer"
-    });
+  const response = await axios.get(resumeUrl, {
+    responseType: "arraybuffer",
+  });
 
-    console.log("Status:", response.status);
+  const data = new Uint8Array(response.data);
 
-    const pdfData = await pdfParse(Buffer.from(response.data));
+  const pdf = await pdfjsLib.getDocument({ data }).promise;
 
-    return pdfData.text;
+  let text = "";
+
+  for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+    const page = await pdf.getPage(pageNum);
+
+    const content = await page.getTextContent();
+
+    text +=
+      content.items
+        .map((item) => item.str)
+        .join(" ") + "\n";
+  }
+
+  return text;
 };
