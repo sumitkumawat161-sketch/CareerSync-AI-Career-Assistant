@@ -1,145 +1,225 @@
-# CarrereSync – AI Powered Hiring Portal
+# CareerSync – AI-Powered Job Portal with Resume-Aware RAG Assistant
 
-## About the Project
+CareerSync is a full-stack AI-powered hiring platform built using the MERN stack. It enables job seekers to discover relevant opportunities while helping recruiters efficiently manage job postings and applicants.
 
-SMART is a full-stack AI-powered Job Portal built using the MERN stack. It provides a platform where job seekers can search and apply for jobs, while recruiters can post, manage, and track job listings.
+To make the hiring experience more intelligent, CareerSync integrates **Google Gemini**, **LangChain**, **Retrieval-Augmented Generation (RAG)**, and **Qdrant Vector Database**. The platform analyzes uploaded resumes, predicts suitable job roles, recommends matching jobs, and provides personalized career guidance through a resume-aware AI assistant.
 
-To make the job search process more personalized, I integrated Generative AI using Google Gemini and LangChain. The application can analyze a candidate's uploaded resume, predict the most suitable job role, recommend relevant jobs from the database, and answer career-related questions based on the candidate's resume.
-
-This project helped me understand full-stack application development, authentication, AI integration, prompt engineering, and building intelligent backend services.
-
----
-<img width="958" height="448" alt="image" src="https://github.com/user-attachments/assets/6c3ac12d-5649-4c0a-b84f-1d0e8333b694" />
+Unlike traditional AI chatbots, the assistant answers questions using the candidate's uploaded resume as contextual knowledge, producing accurate and personalized responses.
 
 ---
 
-## Features
+## Preview
 
-### For Job Seekers
+![CareerSync Preview](image.png)
+---
 
-* User registration and secure login using JWT
-* Browse and search jobs
-* Filter jobs based on different criteria
-* Apply for jobs
-* Upload resume
-* AI-powered resume analysis
-* Automatic job role prediction from resume
-* Personalized job recommendations
-* AI Career Assistant for career guidance
-* Resume-based AI chat to answer questions related to the uploaded resume
-* View applied jobs
+# Features
 
-### For Recruiters
+## Job Seekers
 
-* Recruiter registration and authentication
-* Create and manage companies
-* Post new job openings
-* Edit and delete jobs
-* View applicants for each job
-* Manage posted jobs
+- Secure Registration & Login (JWT Authentication)
+- Browse and Search Jobs
+- Filter Jobs by Role, Location, and Keywords
+- Apply for Jobs
+- Upload Resume
+- View Applied Jobs
+- Personalized Dashboard
+
+## Recruiters
+
+- Recruiter Authentication
+- Company Management
+- Create, Update, and Delete Job Listings
+- View Applicants
+- Manage Posted Jobs
 
 ---
 
-## AI Features
+# AI Features
 
-The project integrates Google Gemini through LangChain to provide intelligent career assistance.
+## AI Resume Analysis
 
-### Resume Analysis
-
-* Extracts text from uploaded PDF resumes.
-* Identifies candidate skills, technologies, projects, and experience.
-* Predicts the most suitable job role.
-
-### Smart Job Recommendation
-
-* Uses the AI-predicted role to search the database.
-* Recommends the most relevant jobs.
-* Returns matching company information.
-
-### AI Career Assistant
-
-Users can ask questions such as:
-
-* Which jobs best match my profile?
-* What skills should I improve?
-* Why is this role suitable for me?
-* Which technology should I learn next?
-
-The AI generates personalized responses using:
-
-* Resume content
-* Predicted role
-* Available matching jobs
-* User's question
-
-### Resume Chat
-
-Users can chat directly with the AI about their resume.
-
-Examples:
-
-* Review my resume.
-* What are my strengths?
-* Which projects should I highlight?
-* How can I improve my resume for placements?
+- Extracts text from uploaded PDF resumes
+- Identifies technical skills and projects
+- Detects candidate experience
+- Predicts the most suitable job role
 
 ---
 
-## Tech Stack
+## Smart Job Recommendation
 
-### Frontend
-
-* React.js
-* Redux Toolkit
-* Tailwind CSS
-* React Router
-
-### Backend
-
-* Node.js
-* Express.js
-* MongoDB
-* Mongoose
-* JWT Authentication
-* Multer
-* Cloudinary
-
-### AI & LLM
-
-* Google Gemini 2.5 Flash
-* LangChain
-* pdf-parse
-
+- Uses AI-predicted job role
+- Searches matching jobs from the database
+- Returns personalized job recommendations
+- Suggests relevant companies
 
 ---
 
+## Resume-Aware RAG Career Assistant
 
+CareerSync includes a Retrieval-Augmented Generation (RAG) based AI assistant.
+
+Instead of relying only on the language model, the assistant retrieves relevant information from the user's uploaded resume stored as vector embeddings in Qdrant before generating a response.
+
+The assistant can answer questions like:
+
+- Review my resume
+- What are my strengths?
+- Which projects should I highlight?
+- Which skills should I improve?
+- Which technology should I learn next?
+- Why am I suitable for this role?
+- Suggest career improvements
+
+Responses are generated using:
+
+- Resume embeddings
+- Retrieved resume context
+- Google Gemini 2.5 Flash
+- LangChain Retrieval Chain
 
 ---
 
-## What I Learned
+## Resume Embedding Pipeline
 
-* Building scalable REST APIs
-* JWT Authentication and Authorization
-* Role-Based Access Control
-* MongoDB Data Modeling
-* File Uploads with Cloudinary
-* PDF Resume Parsing
-* Prompt Engineering
-* LangChain Fundamentals
-* Google Gemini API Integration
-* AI-powered Resume Analysis
-* AI-driven Job Recommendation Systems
-* Building Context-Aware AI Assistants
-* Structuring a production-style MERN application
+The uploaded resume goes through the following AI pipeline:
 
+```
+PDF Resume
+      │
+      ▼
+Text Extraction
+      │
+      ▼
+Text Chunking
+      │
+      ▼
+Gemini Embeddings
+      │
+      ▼
+Qdrant Vector Database
+      │
+      ▼
+Semantic Retrieval
+      │
+      ▼
+Google Gemini
+      │
+      ▼
+Personalized AI Response
+```
 
 ---
 
-## Author
+# Tech Stack
 
-**Sumit Kumawat**
+## Frontend
 
-Final Year B.Tech Student | MERN Stack Developer | GenAI Enthusiast
+- React.js
+- Redux Toolkit
+- Tailwind CSS
+- React Router
+- Axios
 
-Passionate about building scalable full-stack applications and integrating Generative AI to solve real-world problems.
+---
+
+## Backend
+
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JWT Authentication
+- Multer
+- Cloudinary
+
+---
+
+## AI Stack
+
+- Google Gemini 2.5 Flash
+- Google Gemini Embeddings
+- LangChain
+- Qdrant Vector Database
+- FastAPI
+- Retrieval-Augmented Generation (RAG)
+
+---
+
+# System Architecture
+
+```
+React Frontend
+       │
+       ▼
+Node.js Backend
+       │
+       ├────────────► MongoDB
+       │
+       ├────────────► Cloudinary
+       │
+       ▼
+FastAPI AI Service
+       │
+       ▼
+Resume Processing
+       │
+       ▼
+Gemini Embeddings
+       │
+       ▼
+Qdrant Vector Store
+       │
+       ▼
+Retriever
+       │
+       ▼
+Gemini 2.5 Flash
+       │
+       ▼
+AI Response
+```
+
+---
+
+# What I Learned
+
+- Full-Stack MERN Development
+- JWT Authentication & Authorization
+- Role-Based Access Control
+- REST API Design
+- MongoDB Data Modeling
+- Resume Parsing
+- Prompt Engineering
+- LangChain Fundamentals
+- Google Gemini Integration
+- Embedding Models
+- Vector Databases
+- Semantic Search
+- Retrieval-Augmented Generation (RAG)
+- Qdrant Integration
+- FastAPI Microservices
+- Production-Style AI System Design
+
+---
+
+# Future Improvements
+
+- Multi-Resume Support
+- Chat History
+- Resume Versioning
+- AI Mock Interview
+- Resume Score & ATS Analysis
+- Semantic Job Search
+- Email Notifications
+- Recruiter AI Candidate Matching
+
+---
+
+# Author
+
+## Sumit Kumawat
+
+Final Year B.Tech Student | MERN Stack Developer | Generative AI Enthusiast
+
+Passionate about building scalable full-stack applications, AI-powered systems, and Retrieval-Augmented Generation (RAG) solutions that solve real-world hiring problems.
