@@ -25,6 +25,7 @@ app.use(cookieParser());
 const allowedOrigins = [
   "http://localhost:5173",
   "https://smart-job-portal-26cd.vercel.app",
+  "https://smart-job-portal-7br3.vercel.app",
 ];
 
 app.use(
